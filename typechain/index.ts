@@ -3,6 +3,10 @@
 /* eslint-disable */
 export type { ERC20 } from "./ERC20";
 export type { Market } from "./Market";
+export type { IERC20 } from "./IERC20";
+export type { Vault } from "./Vault";
 
 export { ERC20__factory } from "./factories/ERC20__factory";
 export { Market__factory } from "./factories/Market__factory";
+export { IERC20__factory } from "./factories/IERC20__factory";
+export { Vault__factory } from "./factories/Vault__factory";

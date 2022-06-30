@@ -1,0 +1,7 @@
+*** Some ideas that I didn't implement ***
+- Add events
+- Allow multiple people to create grants
+- Allow multiple people to fund a single grant
+- Make a single grant where multiple people get a share of it
+- Create timeframes for donations and withdrawals
+- Simple vote system to cancel grants

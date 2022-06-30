@@ -1,0 +1,26 @@
+*** onlyOwner ***
+- Doesn't get the job done and lets anybody bypass it through a deployed contract
+- Correct implementation should be "require(msg.sender == owner && msg.sender == tx.origin)"
+- As this modifier is compromised, it allows anybody to call registerPool() and claimProfits()
+
+*** claimProfits ***
+- As said above anybody can call this function and drain all the fees
+
+*** registerPool ***
+- As said above anybody can call this function and register their own pool
+- This function scans for the selfdestruct opcode but it might run out of gas if the contract is too big
+
+*** signedTransfer ***
+- Not a good idea to let anyone insert code with the extraData argument, should be set to "0x0" by default
+- Signatures are never stored in the usedSignatures mapping so the second require statment will always evaluate to true
+- Signatures can therefore be replayed and allow anybody to drain tokens
+
+*** deposit ***
+- Unsafe delegate call as we can push any contract address we want to poolRegistration because of the bad onlyOwner implementation
+- This allows to change state variables and credit us tokens
+
+*** withdraw ***
+- Same unsafe delagatecall
+
+Note: There's probably more vulnerabilities but I'm stopping here as we can do pretty much whatever we want to this contract 
+with the above statments.
